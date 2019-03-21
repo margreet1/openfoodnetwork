@@ -142,7 +142,7 @@ class Enterprise < ActiveRecord::Base
       ").
       joins('INNER JOIN exchange_variants ON (exchange_variants.exchange_id = exchanges.id)').
       joins('INNER JOIN spree_variants ON (spree_variants.id = exchange_variants.variant_id)').
-      where('spree_variants.product_id IN (?)', products).select('DISTINCT enterprises.id')
+      where('spree_variants.product_id IN (?)', products.pluck(:id)).select('DISTINCT enterprises.id')
 
     where(id: exchanges)
   }
@@ -351,7 +351,7 @@ class Enterprise < ActiveRecord::Base
   end
 
   def ensure_owner_is_manager
-    users << owner unless users.include?(owner)
+    #users << owner unless users.include?(owner)
   end
 
   def enforce_ownership_limit
