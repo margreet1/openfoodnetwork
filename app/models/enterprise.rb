@@ -91,7 +91,7 @@ class Enterprise < ActiveRecord::Base
     joins(:shipping_methods).
       joins(:payment_methods).
       merge(Spree::PaymentMethod.available).
-      select('DISTINCT enterprises.*')
+      select('DISTINCT enterprises.id')
   }
   scope :not_ready_for_checkout, lambda {
     # When ready_for_checkout is empty, ActiveRecord generates the SQL:
@@ -142,7 +142,7 @@ class Enterprise < ActiveRecord::Base
       ").
       joins('INNER JOIN exchange_variants ON (exchange_variants.exchange_id = exchanges.id)').
       joins('INNER JOIN spree_variants ON (spree_variants.id = exchange_variants.variant_id)').
-      where('spree_variants.product_id IN (?)', products.pluck(:id)).select('DISTINCT enterprises.id')
+      where('spree_variants.product_id IN (?)', product_ids).select('DISTINCT enterprises.id')
 
     where(id: exchanges)
   }
@@ -375,21 +375,21 @@ class Enterprise < ActiveRecord::Base
     # We grant permissions to all pre-existing hubs
     hub_permissions = [:add_to_order_cycle]
     hub_permissions << :create_variant_overrides if is_primary_producer
-    enterprises.is_hub.each do |enterprise|
-      EnterpriseRelationship.create!(parent: self,
-                                     child: enterprise,
-                                     permissions_list: hub_permissions)
-    end
+    #enterprises.is_hub.each do |enterprise|
+    #  EnterpriseRelationship.create!(parent: self,
+    #                                 child: enterprise,
+    #                                 permissions_list: hub_permissions)
+    #end
 
     # All pre-existing producers grant permission to new hubs
-    if is_hub
-      enterprises.is_primary_producer.each do |enterprise|
-        EnterpriseRelationship.create!(parent: enterprise,
-                                       child: self,
-                                       permissions_list: [:add_to_order_cycle,
-                                                          :create_variant_overrides])
-      end
-    end
+    #if is_hub
+    #  enterprises.is_primary_producer.each do |enterprise|
+    #    EnterpriseRelationship.create!(parent: enterprise,
+    #                                   child: self,
+    #                                   permissions_list: [:add_to_order_cycle,
+    #                                                      :create_variant_overrides])
+    #  end
+    #end
   end
 
   def shopfront_taxons
@@ -408,7 +408,7 @@ class Enterprise < ActiveRecord::Base
   end
 
   def touch_distributors
-    Enterprise.distributing_products(self.supplied_products).
+    Enterprise.distributing_products(self.supplied_products.select(:id)).
       where('enterprises.id != ?', self.id).
       each(&:touch)
   end
