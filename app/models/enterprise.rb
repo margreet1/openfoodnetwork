@@ -142,7 +142,7 @@ class Enterprise < ActiveRecord::Base
       ").
       joins('INNER JOIN exchange_variants ON (exchange_variants.exchange_id = exchanges.id)').
       joins('INNER JOIN spree_variants ON (spree_variants.id = exchange_variants.variant_id)').
-      where('spree_variants.product_id IN (?)', product_ids).select('DISTINCT enterprises.id')
+      where('spree_variants.product_id IN (?)', products.pluck(:id)).select('DISTINCT enterprises.id')
 
     where(id: exchanges)
   }
