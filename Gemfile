@@ -93,6 +93,7 @@ gem 'whenever', require: false
 # in production environments by default.
 group :assets do
   gem 'compass-rails'
+
   gem 'coffee-rails', '~> 4.0.0'
 
   gem 'therubyracer', '=0.12.0'
@@ -125,7 +126,7 @@ group :test, :development do
   gem 'fuubar', '~> 2.3.2'
   gem 'rspec-rails', ">= 3.5.2"
   gem 'shoulda-matchers'
-  gem "factory_bot_rails", require: false
+  gem "factory_bot_rails", '4.8.2', require: false
   gem 'capybara', '>= 2.15.4'
   gem 'database_cleaner', '0.7.1', require: false
   gem 'awesome_print'
