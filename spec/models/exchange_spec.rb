@@ -194,9 +194,9 @@ describe Exchange do
       end
 
       it "finds exchanges involving any of a number of enterprises" do
-        Exchange.involving([supplier]).should == [incoming_exchange]
-        Exchange.involving([coordinator]).should match_array [incoming_exchange, outgoing_exchange]
-        Exchange.involving([distributor]).should == [outgoing_exchange]
+        Exchange.involving([supplier.id]).should == [incoming_exchange]
+        Exchange.involving([coordinator.id]).should match_array [incoming_exchange, outgoing_exchange]
+        Exchange.involving([distributor.id]).should == [outgoing_exchange]
       end
     end
 
