@@ -101,16 +101,8 @@ gem 'momentjs-rails'
 gem 'angular-rails-templates', '~> 0.3.0'
 ##########################################
 
-
-# Bundler could not find compatible versions for gem "sass":
-# In Gemfile:
-#   foundation-rails was resolved to 5.5.2.1, which depends on
-#     sass (< 3.5, >= 3.3.0)
-#
-#   sass-rails was resolved to 5.0.7, which depends on
-#     sass (~> 3.1)
-# gem "foundation-rails"
-# gem 'foundation_rails_helper', github: 'willrjmarshall/foundation_rails_helper', branch: "rails3"
+gem 'foundation-rails', '= 5.5.2.1'
+gem 'foundation_rails_helper', github: 'willrjmarshall/foundation_rails_helper', branch: 'rails3'
 
 gem 'jquery-rails', '3.0.0'
 gem 'jquery-migrate-rails'

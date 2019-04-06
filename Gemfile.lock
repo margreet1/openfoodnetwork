@@ -82,6 +82,16 @@ GIT
       rails-i18n
       spree_core (>= 1.1)
 
+GIT
+  remote: https://github.com/willrjmarshall/foundation_rails_helper.git
+  revision: 4d5d53fdc4b1fb71e66524d298c5c635de82cfbb
+  branch: rails3
+  specs:
+    foundation_rails_helper (0.4)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      railties (>= 3.0)
+
 PATH
   remote: engines/order_management
   specs:
@@ -420,6 +430,9 @@ GEM
     foundation-icons-sass-rails (3.0.0)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
+    foundation-rails (5.5.2.1)
+      railties (>= 3.1.0)
+      sass (>= 3.3.0, < 3.5)
     fuubar (2.3.2)
       rspec-core (~> 3.0)
       ruby-progressbar (~> 1.4)
@@ -764,6 +777,8 @@ DEPENDENCIES
   figaro
   foreigner
   foundation-icons-sass-rails
+  foundation-rails (= 5.5.2.1)
+  foundation_rails_helper!
   fuubar (~> 2.3.2)
   geocoder
   gmaps4rails
