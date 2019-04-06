@@ -85,11 +85,11 @@ describe EnterpriseRelationship do
       let!(:er3) { create(:enterprise_relationship, parent: e1, child: e3) }
 
       it "finds relationships that grant permissions to some enterprises" do
-        EnterpriseRelationship.permitting([e1, e2]).should match_array [er1, er2]
+        EnterpriseRelationship.permitting([e1.id, e2.id]).should match_array [er1, er2]
       end
 
       it "finds relationships that are granted by particular enterprises" do
-        EnterpriseRelationship.permitted_by([e1, e2]).should match_array [er1, er3]
+        EnterpriseRelationship.permitted_by([e1.id, e2.id]).should match_array [er1, er3]
       end
     end
 
