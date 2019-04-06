@@ -240,7 +240,7 @@ describe Exchange do
       ex.variants << v1
       ex.variants << v2
 
-      Exchange.with_any_variant([v1, v2, v3]).should == [ex]
+      Exchange.with_any_variant([v1.id, v2.id, v3.id]).should == [ex]
     end
 
     it "finds exchanges with a particular product's master variant" do
