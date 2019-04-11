@@ -85,9 +85,9 @@ RSpec.configure do |config|
   config.verbose_retry = true
 
   # DatabaseCleaner
-  config.before(:suite)          { DatabaseCleaner.clean_with :deletion, {except: ['spree_countries', 'spree_states']} }
+  config.before(:suite)          { DatabaseCleaner.clean_with :deletion, {except: ['spree_countries', 'spree_states', 'spree_users', 'spree_addresses', 'enterprises']} }
   config.before(:each)           { DatabaseCleaner.strategy = :transaction }
-  config.before(:each, js: true) { DatabaseCleaner.strategy = :deletion, {except: ['spree_countries', 'spree_states']} }
+  config.before(:each, js: true) { DatabaseCleaner.strategy = :deletion, {except: ['spree_countries', 'spree_states', 'spree_users', 'spree_addresses', 'enterprises']} }
   config.before(:each)           { DatabaseCleaner.start }
   config.after(:each)            { DatabaseCleaner.clean }
   config.after(:each, js:true) do
