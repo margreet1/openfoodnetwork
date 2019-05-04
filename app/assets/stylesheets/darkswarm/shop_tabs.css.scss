@@ -4,9 +4,9 @@
 
 // Tabs styling
 .tabset-ctrl#shop-tabs {
-  background: url("/assets/gray_jean.png") top left repeat;
+  // background: url("/assets/gray_jean.png") top left repeat;
 
-  @include box-shadow(inset 0 2px 3px 0 rgba(0, 0, 0, 0.15));
+  box-shadow: 0 1px 0 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);;
 
   display: block;
   color: $dark-grey;
@@ -23,7 +23,7 @@
       outline: none;
       display: block;
       background-color: #efefef;
-      color: #222;
+      color: #ADADAD;
       font-family: "Oswald", sans-serif;
     }
 
@@ -39,7 +39,7 @@
       border: none;
 
       &:hover, &:focus, &:active {
-        color: $clr-brick-bright;
+        color: $clr-blue-bright;
       }
 
       &, &:hover {
@@ -71,15 +71,15 @@
     }
 
     &.selected {
-      border-top: 4px solid $clr-brick;
+      border-bottom: 4px solid $clr-blue;
 
       @media all and (max-width: 640px) {
-        border-top: 4px solid transparent;
-        background-color: $clr-brick;
+        border-bottom: 4px solid transparent;
+        background-color: $clr-blue;
       }
 
       a {
-        color: $clr-brick;
+        color: $clr-blue;
 
         @media all and (max-width: 640px) {
           color: white;
@@ -137,7 +137,7 @@
 
     .panel {
       padding-bottom: 1.25em;
-      border-color: $clr-brick-bright;
+      border-color: $clr-blue-bright;
       background-color: rgba(255, 255, 255, 0);
     }
   }
