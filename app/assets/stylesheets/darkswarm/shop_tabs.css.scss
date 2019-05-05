@@ -138,7 +138,10 @@
     .panel {
       padding-bottom: 1.25em;
       border-color: $clr-blue-bright;
-      background-color: rgba(255, 255, 255, 0);
+      background-color: $clr-blue-bright;
+      background-size: cover !important;
+      display: flex;
+      align-items: center;
     }
   }
 }
